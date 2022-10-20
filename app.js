@@ -19,9 +19,21 @@ const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/en
             </soapenv:Body>
             </soapenv:Envelope>`;
 
+
+/*
+            const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aut="http://pepsico.com/ActivosFijos/AutosUtilitarios">
+            <soapenv:Header/>
+            <soapenv:Body>
+               <aut:bisCatalog>
+                  <Gpid>80976646</Gpid>
+               </aut:bisCatalog>
+            </soapenv:Body>
+         </soapenv:Envelope>`;      
+*/      
+
 (async () => {
     const { response } = await soapRequest({ url: url, headers: sampleHeaders, xml: xml });
     let remoteReponse =  await Parser.convertXMLToJSON(response.body);
-    console.log(remoteReponse);
+    console.log(JSON.stringify(remoteReponse) );
 
 })();
